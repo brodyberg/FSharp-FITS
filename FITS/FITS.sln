@@ -7,6 +7,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FITS", "FITS\FITS.fsproj", 
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Tests\Tests.fsproj", "{6C573AAF-BF60-4AB6-A31D-FAA7D679A950}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{77B76A44-AEB7-4045-8387-F91FE0322766}"
+	ProjectSection(SolutionItems) = preProject
+		Bad.fits = Bad.fits
+		superBasic.fits = superBasic.fits
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

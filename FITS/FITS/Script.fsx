@@ -2,7 +2,19 @@
 // for more guidance on F# programming.
 
 #load "Library1.fs"
-open FITS
+open FITSParser
+open System
+open System.IO
 
-// Define your library scripting code here
+let location = @"C:\Users\brodyberg\Documents\GitHub\FSharp-FITS\FITS\"
+let bad = location + "Bad.fits"
+let good = location + "superBasic.fits"
+
+Parse bad
+Parse good
+
+//let x = System.IO.File.ReadAllText(location + @"superBasic.fits")
+
+
+
 
