@@ -9,14 +9,19 @@ module Parser =
     let location = @"..\..\..\"
     let bad = location + "Bad.fits"
     let good = location + "superBasic.fits"
+    let noEnd = location + "headerNoEnd.fits"
 
     [<Fact>]
     let ``If file does not exist, returns NoSuchFile(string)``() =
         test <@ Parse "noSuchFile.fits" = NoSuchFile("noSuchFile.fits") @>
 
+//    [<Fact>]
+//    let ``If invalid header found, returns FailedToParse (InvalidHeader NoEND)``() =
+//        test <@ Parse bad = FailedToParse (InvalidHeader NoEND) @>
+
     [<Fact>]
-    let ``If invalid header found, returns FailedToParse(InvalidHeader(string))``() =
-        test <@ Parse bad = FailedToParse (InvalidHeader "Too short") @>
+    let ``If no END found, returns FailedToParse(InvalidHeader(string))``() =
+        test <@ Parse bad = FailedToParse (InvalidHeader NoEND) @>
 
     [<Fact>]
     let ``A FITS file with one valid header returns key and value``() =

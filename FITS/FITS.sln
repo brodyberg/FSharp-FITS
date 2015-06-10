@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{77B76A44-AEB7-4045-8387-F91FE0322766}"
 	ProjectSection(SolutionItems) = preProject
 		Bad.fits = Bad.fits
+		headerNoEnd.fits = headerNoEnd.fits
 		superBasic.fits = superBasic.fits
 	EndProjectSection
 EndProject

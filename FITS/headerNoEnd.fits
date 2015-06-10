@@ -1,0 +1,10 @@
+SIMPLE  =                    T
+BITPIX  =                    8/ 8 bits per pixel
+NAXIS   =                    2/ Table is a 2D matrix
+NAXIS1  =                  168/ Width of table row in bytes
+NAXIS2  =                    5/ Number of rows in table
+DATE    = '09/17/93'
+ORIGIN  = 'O''Reilly & Associates'/ Publisher
+AUTHOR  = 'James D. Murray'/ Creator
+REFERENC= 'Graphics File Formats'/ Where referenced
+COMMENT = 'Sample FITS header'

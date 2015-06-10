@@ -13,8 +13,6 @@ let good = location + "superBasic.fits"
 Parse bad
 Parse good
 
-//let x = System.IO.File.ReadAllText(location + @"superBasic.fits")
-
 
 
 
