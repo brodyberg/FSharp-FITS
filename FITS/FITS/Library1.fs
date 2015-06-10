@@ -37,11 +37,31 @@ let Parse (path:string) =
     else 
         let fileText = File.ReadAllText path
 
-        let first80 = fileText.Substring(0, 80)
+//        if fileText.Length >= 80)
+        match (fileText.Length >= 80) with
+        | true -> 
+            let first80 = fileText.Substring(0, 80)
     
-        match first80 with
-        | KeyValue(key,value) -> File(Header([KeyValue(Key(key), Value(value))]))
-        | KeyValueComment(key,value,comment) -> File(Header([KeyValueComment(Key(key), Value(value), Comment(comment))]))
+            match first80 with
+            | KeyValue(key,value) -> 
+                File(Header([KeyValue(Key(key), Value(value))]))
+            | KeyValueComment(key,value,comment) -> 
+                File(Header([KeyValueComment(Key(key), Value(value), Comment(comment))]))
+            | _ -> FailedToParse(InvalidHeader(first80))
+        | false -> FailedToParse(InvalidHeader("Too short"))
+//
+//
+//        printfn "Length greater than 80?: %A" (fileText.Length > 80)
+//
+//        NoSuchFile("just kidding")
+
+//        if ((fileText.Length) >= 80)
+//        then 
+//            let first80 = fileText.Substring(0, 80)
+//    
+//            match first80 with
+//            | KeyValue(key,value) -> File(Header([KeyValue(Key(key), Value(value))]))
+//            | KeyValueComment(key,value,comment) -> File(Header([KeyValueComment(Key(key), Value(value), Comment(comment))]))
 
 
 
