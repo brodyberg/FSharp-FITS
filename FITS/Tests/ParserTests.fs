@@ -16,7 +16,7 @@ module Parser =
 
     [<Fact>]
     let ``If invalid header found, returns FailedToParse(InvalidHeader(string))``() =
-        test <@ Parse bad = FailedToParse(InvalidHeader("foo")) @>
+        test <@ Parse bad = FailedToParse (InvalidHeader "Too short") @>
 
     [<Fact>]
     let ``A FITS file with one valid header returns key and value``() =
