@@ -15,10 +15,6 @@ module Parser =
     let ``If file does not exist, returns NoSuchFile(string)``() =
         test <@ Parse "noSuchFile.fits" = NoSuchFile("noSuchFile.fits") @>
 
-//    [<Fact>]
-//    let ``If invalid header found, returns FailedToParse (InvalidHeader NoEND)``() =
-//        test <@ Parse bad = FailedToParse (InvalidHeader NoEND) @>
-
     [<Fact>]
     let ``If no END found, returns FailedToParse(InvalidHeader(string))``() =
         test <@ Parse bad = FailedToParse (InvalidHeader NoEND) @>
