@@ -57,7 +57,9 @@ let (|KeyValueComment|_|) (str:string) = None
 let stringToNewlineSeq (str:string) = 
     seq {
         let parts = str.Split([| '\n' |])
-        for part in parts -> part
+        for part in parts -> 
+            printfn "seq returning: %s" part
+            part
     }
 
 let Parse (path:string) = 
@@ -71,16 +73,28 @@ let Parse (path:string) =
         | Header(headerText) -> 
             match (fileText.Length >= 80) with
             | true -> 
-  
-                let parts = fileText.Split([| '\n' |])
-                let first80 = parts.[0]
-    
-                match first80 with
-                | KeyValue(key,value) -> 
-                    File(Header([KeyValue(Key(key), Value(value))]))
-                | KeyValueComment(key,value,comment) -> 
-                    File(Header([KeyValueComment(Key(key), Value(value), Comment(comment))]))
-                | _ -> FailedToParse(InvalidHeader(Invalid(first80)))
+
+                let headerList = 
+                    headerText
+                    |> stringToNewlineSeq
+                    |> Seq.toList
+                    |> List.map (fun line -> 
+                        match line with
+                        | KeyValue(key,value) -> KeyValue(Key(key), Value(value))
+                        | _ -> KeyValue(Key("foo"), Value("value")))
+
+                File(Header(headerList))
+//
+//  
+////                let parts = fileText.Split([| '\n' |])
+////                let first80 = parts.[0]
+//    
+//                match line with
+//                | KeyValue(key,value) -> 
+//                    File(Header([KeyValue(Key(key), Value(value))]))
+//                | KeyValueComment(key,value,comment) -> 
+//                    File(Header([KeyValueComment(Key(key), Value(value), Comment(comment))]))
+//                | _ -> FailedToParse(InvalidHeader(Invalid(first80)))
             | false -> FailedToParse(InvalidHeader(Invalid("Too short")))
         | _ -> FailedToParse(InvalidHeader(NoEND))
 
