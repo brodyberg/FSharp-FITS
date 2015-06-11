@@ -54,6 +54,12 @@ let (|KeyValue|_|) (str:string) =
 
 let (|KeyValueComment|_|) (str:string) = None
 
+let stringToNewlineSeq (str:string) = 
+    seq {
+        let parts = str.Split([| '\n' |])
+        for part in parts -> part
+    }
+
 let Parse (path:string) = 
 
     if not (File.Exists path) 
