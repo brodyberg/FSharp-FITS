@@ -10,6 +10,23 @@ let location = @"C:\Users\brodyberg\Documents\GitHub\FSharp-FITS\FITS\"
 let bad = location + "Bad.fits"
 let good = location + "superBasic.fits"
 
+let fileText = File.ReadAllText good
+
+let headerText = fileText
+
+let splitWhitespace (str:string) = str.Split()
+
+headerText
+|> stringToNewlineSeq
+|> Seq.toList
+|> List.map 
+    (fun line -> 
+        line
+        |> splitWhitespace
+        |> Array.filter (fun item -> not (String.IsNullOrEmpty(item))))
+
+
+
 Parse bad
 Parse good
 

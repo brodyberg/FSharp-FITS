@@ -47,7 +47,7 @@ let (|Header|_|) (str:string) =
     | _ -> Some(str)
 
 let (|KeyValue|_|) (str:string) = 
-    printfn "KeyValue: %s" str
+    printfn "KeyValue param: %s" str
     match str with
     | Regex @"(^[a-zA-Z]*)\s*=\s*([a-zA-Z])" [key; value] -> Some(key, value)    
     | _ -> None
